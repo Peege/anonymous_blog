@@ -1,8 +1,13 @@
-post '/searchtag' do
+get '/searchtag/:id' do
   # @tag = Tag.find(params[:name])
-  @tags = Tag.where(name: params[:name]).first.id
-  p @tags
+  @tag = Tag.find(params[:id])
 
+  erb :post_tags
+end
 
-  erb :posts_tags
+#search by tag and shows post page
+post '/searchtag' do
+  @tag = Tag.where(name: params[:name]).first
+
+  erb :post_tags
 end

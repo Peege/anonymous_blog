@@ -6,21 +6,16 @@ end
 
 # puts "Create new post"
 post '/post/create' do
-  @posts = Post.create(title:params[:title],content:params[:content],author:params[:author])
-  puts @posts
-  # @tags = Tag.create(name: params[:name])
-  # puts @tags
+
+  @post = Post.create(title: params[:post][:title],content:params[:post][:content],author:params[:post][:author])
+  params[:tag][:name].split(", ").each do |tag|
+    @tag = Tag.find_or_create_by_name(tag)
+    @post.tags << @tag
+    @post.save
+  end
 
   erb :success
 end
-
-# #search by tag and shows post page
-# post '/search' do
-#   @post = Post.where(title: params[:title]).first
-
-#   erb :show_post
-# end
-
 
 #shows post page
 get '/posts/:id/show' do

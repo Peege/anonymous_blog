@@ -14,16 +14,14 @@
   <a href= "/post">
   <p>Create New Entry</p>  </a>
 
-  <% @posts.each do |p| %>
-    <a href="/posts/<%= p.id %>/show">
-    <h2><%=p.title%></h2> </a>
-    <%=p.content%>
-
-
-
-
-  <%end%>
-
-
-
+  <% @posts.each do |post| %>
+    <a href="/posts/<%= post.id %>/show">
+    <h2> <%= post.title %></h2> </a>
+    <br>
+    Content: <%= post.content %> <br>
+    Tags:
+      <% post.tags.each do |tag| %>
+        <a href="/searchtag/<%= tag.id %>"><%= tag.name %></a>
+      <% end %>
+  <% end %>
 </div>
