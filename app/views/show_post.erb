@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>50 SHADES OF RAINBOW</h1>
+</div>
+
+
+<div class="entry">
+  <% if @post %>
+    <h2>Title: <%= @post.title%> </h2>
+    <p><%= @post.content%> </p>
+  <% end %>
+
+<form action='/posts/<%= @post.id %>/delete' method='post'>
+  <input type='hidden' name='_method' value='delete'>
+  <button value='submit'>Delete</button>
+</form><br>
+
+<a href="/posts/<%= @post.id %>/edit"><button value='submit'>Edit</button></a> <br>
+
+</div>
+
+

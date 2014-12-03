@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>50 SHADES OF RAINBOW</h1>
+
+  <div class="form">
+    <form action="/searchtag" method="post">
+      <input type="text" class="resizedTextbox" name="name">
+      <input type="submit" value="Search tag">
+    </form>
+  </div>
+</div>
+
+<div class="entry">
+  <br>
+  <a href= "/post">
+  <p>Create New Entry</p>  </a>
+
+  <% @posts.each do |p| %>
+    <a href="/posts/<%= p.id %>/show">
+    <h2><%=p.title%></h2> </a>
+    <%=p.content%>
+
+
+
+
+  <%end%>
+
+
+
+</div>
